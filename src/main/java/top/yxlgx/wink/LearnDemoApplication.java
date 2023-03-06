@@ -1,4 +1,4 @@
-package top.yxlgx;
+package top.yxlgx.wink;
 
 import com.cosium.spring.data.jpa.entity.graph.repository.support.EntityGraphJpaRepositoryFactoryBean;
 import org.springframework.boot.SpringApplication;

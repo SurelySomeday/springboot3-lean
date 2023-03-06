@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.yxlgx.wink.mapper.UserMapper">
+
+    <resultMap id="all" type="User" autoMapping="true">
+        <association property="address" javaType="Address"  autoMapping="true">
+        </association>
+    </resultMap>
+
+<select id="getUserByLikeName" resultMap="all">
+    select a.*,ad.* from sys_user a
+    left join sys_address ad on a.address_id=ad.id
+    where name like  concat('%',#{name},'%')
+    </select>
+</mapper>
