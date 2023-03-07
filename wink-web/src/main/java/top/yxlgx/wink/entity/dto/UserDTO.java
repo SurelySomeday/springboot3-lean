@@ -3,7 +3,6 @@ package top.yxlgx.wink.entity.dto;
 import jakarta.persistence.*;
 import lombok.Data;
 import top.yxlgx.wink.annotation.Query;
-import top.yxlgx.wink.entity.Address;
 
 import java.util.List;
 
