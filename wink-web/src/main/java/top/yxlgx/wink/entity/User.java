@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.JoinFormula;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.UuidGenerator;
 import org.hibernate.annotations.Where;
@@ -43,26 +44,31 @@ import java.util.stream.Collectors;
 public class User extends BaseEntity implements Serializable, UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    private Long id;
     @Column(name = "name")
-    String name;
+    private String name;
     @Column(name = "age")
-    Integer age;
+    private Integer age;
 
     @Column(name = "username")
     String username;
     @Column(name = "password")
-    String password;
+    private String password;
 
     @Column(name = "deleted")
-    Integer deleted;
+    private Integer deleted=0;
 
-    @OneToMany(cascade= CascadeType.ALL,fetch=FetchType.EAGER)
+    @ManyToMany(cascade= CascadeType.ALL,fetch=FetchType.EAGER)
     @JoinTable(name = "sys_users_roles",
             joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")}
     )
-    Set<Role> roles;
+    private Set<Role> roles;
+
+    @PreRemove
+    public void deleteUser() {
+        this.deleted = 1;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

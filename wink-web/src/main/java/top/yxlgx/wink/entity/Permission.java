@@ -22,8 +22,8 @@ import java.util.Set;
 public class Permission extends BaseEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    private Long id;
     @Column(name = "name")
-    String name;
+    private String name;
 
 }

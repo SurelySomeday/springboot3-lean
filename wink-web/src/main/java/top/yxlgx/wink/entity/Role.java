@@ -20,17 +20,24 @@ import java.util.Set;
         @Index(name = "sys_role_name",columnList = "name", unique = true)
 }
 )
+@NamedEntityGraph(
+        name = "role.all",
+        attributeNodes =  {
+                @NamedAttributeNode("permissions")
+        }
+)
 public class Role extends BaseEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    private Long id;
     @Column(name = "name")
-    String name;
+    private String name;
 
-    @OneToMany(cascade= CascadeType.ALL,fetch=FetchType.EAGER)
+    @ManyToMany(cascade= CascadeType.ALL,fetch=FetchType.EAGER)
     @JoinTable(name = "sys_roles_permissions",
             joinColumns = {@JoinColumn(name = "permission_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")}
+            inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")},
+            indexes = {@Index(name="sys_users_roles_unique",columnList = "role_id,permission_id",unique = true)}
     )
-    Set<Permission> roles;
+    private Set<Permission> permissions;
 }
