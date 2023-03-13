@@ -32,7 +32,7 @@ import java.util.Optional;
  * @author yanxin
  * @Description:
  */
-@Configuration
+//@Configuration
 @RequiredArgsConstructor
 public class SecurityConfiguration {
     private final ApplicationContext applicationContext;

@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
  * @author yanxin
  * @Description:
  */
-@Service(value = "el")
+//@Service(value = "el")
 public class PermissionCheckService {
 
     public Boolean check(String ...permissions){

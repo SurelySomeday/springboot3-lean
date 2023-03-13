@@ -2,6 +2,7 @@ package top.yxlgx.wink.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.JoinFormula;
@@ -16,6 +17,7 @@ import top.yxlgx.wink.entity.base.BaseEntity;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -65,6 +67,14 @@ public class User extends BaseEntity implements Serializable, UserDetails {
     )
     private Set<Role> roles;
 
+
+    /**
+     * 用户部门
+     */
+    @OneToOne
+    @JoinColumn(name = "dept_id")
+    private Dept dept;
+
     @PreRemove
     public void deleteUser() {
         this.deleted = 1;
@@ -103,5 +113,22 @@ public class User extends BaseEntity implements Serializable, UserDetails {
     @Override
     public boolean isEnabled() {
         return this.deleted==0;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        User user = (User) o;
+        return Objects.equals(id, user.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
