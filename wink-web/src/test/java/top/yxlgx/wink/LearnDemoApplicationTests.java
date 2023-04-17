@@ -1,18 +1,15 @@
 package top.yxlgx.wink;
 
 import jakarta.annotation.Resource;
-import org.apache.cxf.configuration.jsse.TLSClientParameters;
-import org.apache.syncope.client.lib.SyncopeClient;
-import org.apache.syncope.client.lib.SyncopeClientFactoryBean;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import top.yxlgx.wink.entity.Role;
 import top.yxlgx.wink.entity.User;
 import top.yxlgx.wink.repository.RoleRepository;
 import top.yxlgx.wink.repository.UserRepository;
 
-import java.util.*;
+import java.util.Optional;
+import java.util.Set;
 
 @SpringBootTest
 class LearnDemoApplicationTests {

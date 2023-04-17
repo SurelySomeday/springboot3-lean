@@ -56,11 +56,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <dependency>
+<!--        <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>${mybatis.boot.version}</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.springframework.integration</groupId>
             <artifactId>spring-integration-http</artifactId>
@@ -115,6 +115,16 @@
             <optional>true</optional>
         </dependency>
         <dependency>
+            <groupId>org.dom4j</groupId>
+            <artifactId>dom4j</artifactId>
+            <version>2.1.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.15.4</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
@@ -154,6 +164,25 @@
             <plugin>
                 <groupId>org.graalvm.buildtools</groupId>
                 <artifactId>native-maven-plugin</artifactId>
+                <version>0.9.21</version>
+              <!--  <configuration>
+                    &lt;!&ndash; imageName用于设置生成的二进制文件名称 &ndash;&gt;
+                    <imageName>${project.artifactId}</imageName>
+                    &lt;!&ndash; mainClass用于指定main方法类路径 &ndash;&gt;
+                    <mainClass>top.yxlgx.wink.LearnDemoApplication</mainClass>
+                    <buildArgs>
+                        &#45;&#45;no-fallback
+                    </buildArgs>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>build-native</id>
+                        <goals>
+                            <goal>compile-no-fork</goal>
+                        </goals>
+                        <phase>package</phase>
+                    </execution>
+                </executions>-->
             </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

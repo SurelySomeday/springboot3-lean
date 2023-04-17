@@ -1,3 +1,5 @@
+server:
+  port: 7019
 spring:
   main:
     allow-circular-references: true
